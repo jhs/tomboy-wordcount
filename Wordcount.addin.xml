@@ -1,7 +1,7 @@
 <Addin id="WordcountAddin"
 	namespace="Tomboy"
 	name="Wordcount"
-	author="Jason Smith <jhs@proven-corporation.com>"
+	author="Proven Corporation Co., Ltd., Thailand"
         description="Show the size of the text in your notes."
 	category="Tools"
 	defaultEnabled="true"
