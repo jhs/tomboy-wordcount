@@ -39,7 +39,7 @@ namespace Tomboy.Wordcount
 			menu.Hidden += OnMenuHidden;
 			menu.ShowAll ();
 			menu_item = new Gtk.ImageMenuItem (
-			        Catalog.GetString ("What links here?"));
+			        Catalog.GetString ("Word count"));
 			menu_item.Image = new Gtk.Image (Gtk.Stock.JumpTo, Gtk.IconSize.Menu);
 			menu_item.Submenu = menu;
 			menu_item.Activated += OnMenuItemActivated;
