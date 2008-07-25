@@ -33,7 +33,7 @@ namespace Tomboy.Wordcount
 		{
                         menu_item = new Gtk.ImageMenuItem(Catalog.GetString("Word count"));
 			menu_item.Image = new Gtk.Image (Gtk.Stock.JumpTo, Gtk.IconSize.Menu);  /* TODO: correct this */
-			menu_item.Activated += OnMenuItemActivated;
+			menu_item.Activated += OnButtonClicked;
 			menu_item.Show ();
 
 			AddPluginMenuItem (menu_item);
@@ -47,7 +47,7 @@ namespace Tomboy.Wordcount
 		{
 		}
 
-		void OnMenuItemActivated (object sender, EventArgs args)
+		void OnButtonClicked (object sender, EventArgs args)
 		{
                         Logger.Log("Word count activated!");
 		}
