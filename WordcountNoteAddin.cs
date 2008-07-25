@@ -51,38 +51,5 @@ namespace Tomboy.Wordcount
 		{
                         Logger.Log("Word count activated!");
 		}
-
-		WordcountMenuItem [] GetWordcountMenuItems ()
-		{
-			ArrayList items = new ArrayList ();
-
-			string search_title = Note.Title;
-			string encoded_title = XmlEncoder.Encode (search_title.ToLower ());
-
-			// Go through each note looking for
-			// notes that link to this one.
-			foreach (Note note in Note.Manager.Notes) {
-				if (note != Note // don't match ourself
-				                && CheckNoteHasMatch (note, encoded_title)) {
-					WordcountMenuItem item =
-					        new WordcountMenuItem (note, search_title);
-
-					items.Add (item);
-				}
-			}
-
-			items.Sort ();
-
-			return items.ToArray (typeof (WordcountMenuItem)) as WordcountMenuItem [];
-		}
-
-		bool CheckNoteHasMatch (Note note, string encoded_title)
-		{
-			string note_text = note.XmlContent.ToLower ();
-			if (note_text.IndexOf (encoded_title) < 0)
-				return false;
-
-			return true;
-		}
 	}
 }
