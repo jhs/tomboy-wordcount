@@ -28,31 +28,19 @@ namespace Tomboy.Wordcount
 	public class WordcountNoteAddin : NoteAddin
 	{
 		Gtk.ImageMenuItem menu_item;
-		Gtk.Menu menu;
-		bool submenu_built;
 
 		public override void Initialize ()
 		{
-			submenu_built = false;
-
-			menu = new Gtk.Menu ();
-			menu.Hidden += OnMenuHidden;
-			menu.ShowAll ();
-			menu_item = new Gtk.ImageMenuItem (
-			        Catalog.GetString ("Word count"));
-			menu_item.Image = new Gtk.Image (Gtk.Stock.JumpTo, Gtk.IconSize.Menu);
-			menu_item.Submenu = menu;
+                        menu_item = new Gtk.ImageMenuItem(Catalog.GetString("Word count"));
+			menu_item.Image = new Gtk.Image (Gtk.Stock.JumpTo, Gtk.IconSize.Menu);  /* TODO: correct this */
 			menu_item.Activated += OnMenuItemActivated;
 			menu_item.Show ();
+
 			AddPluginMenuItem (menu_item);
 		}
 
 		public override void Shutdown ()
 		{
-			// The following two lines are required to prevent the plugin
-			// from leaking references when the plugin is disabled.
-			menu.Hidden -= OnMenuHidden;
-			menu_item.Activated -= OnMenuItemActivated;
 		}
 
 		public override void OnNoteOpened ()
@@ -61,49 +49,7 @@ namespace Tomboy.Wordcount
 
 		void OnMenuItemActivated (object sender, EventArgs args)
 		{
-			if (submenu_built == true)
-				return; // submenu already built.  do nothing.
-
-			UpdateMenu ();
-		}
-
-		void OnMenuHidden (object sender, EventArgs args)
-		{
-			// FIXME: Figure out how to have this function be called only when
-			// the whole Tools menu is collapsed so that if a user keeps
-			// toggling over the "What links here?" menu item, it doesn't
-			// keep forcing the submenu to rebuild.
-
-			// Force the submenu to rebuild next time it's supposed to show
-			submenu_built = false;
-		}
-
-		void UpdateMenu ()
-		{
-			//
-			// Clear out the old list
-			//
-			foreach (Gtk.MenuItem old_item in menu.Children) {
-				menu.Remove (old_item);
-			}
-
-			//
-			// Build a new list
-			//
-			foreach (WordcountMenuItem item in GetWordcountMenuItems ()) {
-				item.ShowAll ();
-				menu.Append (item);
-			}
-
-			// If nothing was found, add in a "dummy" item
-			if (menu.Children.Length == 0) {
-				Gtk.MenuItem blank_item = new Gtk.MenuItem (Catalog.GetString ("(none)"));
-				blank_item.Sensitive = false;
-				blank_item.ShowAll ();
-				menu.Append (blank_item);
-			}
-
-			submenu_built = true;
+                        Logger.Log("Word count activated!");
 		}
 
 		WordcountMenuItem [] GetWordcountMenuItems ()
