@@ -18,6 +18,7 @@
 
 using System;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 using Mono.Unix;
 
@@ -47,9 +48,34 @@ namespace Tomboy.Wordcount
 		{
 		}
 
+                static Regex wordSplitter = new Regex("\\s+");
+
+                /* Return the word count of an arbitrary multi-line text string. */
+                private int CountWords (string s)
+                {
+                    return wordSplitter.Split(s).Length;
+                }
+
 		void OnButtonClicked (object sender, EventArgs args)
 		{
-                        Logger.Log("Word count activated!");
+                        int lines, words, chars;    // Like wc.
+
+                        // For now, the char count simply omits the top-level XML tag.
+                        string header = "<note-content version=\"0.1\">";
+                        string footer = "</note-content>";
+
+                        chars = Note.Data.Text.Length - header.Length - footer.Length;
+                        string realText = Note.Data.Text.Substring(header.Length, chars);
+
+                        /* The word count is straightforward, but remember to omit the note title. */
+                        words = CountWords(realText);
+                        words -= CountWords(Note.Title);
+
+                        lines = realText.Split('\n').Length;
+                        lines -= 2; // Omit the Title and blank line beneath it.
+
+                        // Logger.Log("{0}:\n{1}", Note.Title, realText);
+                        Logger.Log("{0}: {1} {2} {3}", Note.Title, lines, words, chars);
 		}
 	}
 }
