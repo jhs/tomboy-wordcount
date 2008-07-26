@@ -74,8 +74,22 @@ namespace Tomboy.Wordcount
                         lines = realText.Split('\n').Length;
                         lines -= 2; // Omit the Title and blank line beneath it.
 
-                        // Logger.Log("{0}:\n{1}", Note.Title, realText);
-                        Logger.Log("{0}: {1} {2} {3}", Note.Title, lines, words, chars);
+                        ShowStats(Note.Title, lines, words, chars);
 		}
+
+                void ShowStats(string title, int lines, int words, int chars)
+                {
+                    Logger.Log("Wordcount: {0}: {1} {2} {3}", title, lines, words, chars);
+
+                    Gtk.Window statWin = new Gtk.Window("This is a window");
+                    statWin.Resize(200, 100);
+
+                    Gtk.Label statLabel = new Gtk.Label();
+                    statLabel.Text = String.Format("{0}\n\nLines: {1}\nWords: {2}\nCharacters: {3}", title, lines, words, chars);
+
+                    statWin.Add(statLabel);
+
+                    statWin.ShowAll();
+                }
 	}
 }
