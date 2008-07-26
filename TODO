@@ -4,6 +4,7 @@ Bugs
 * XML tags within the note are counted as normal characters and words.
   Should probably use an XSLT to convert to genuine plain text and then
   process that.
+* Need a Changelog
 
 Features
 ========
