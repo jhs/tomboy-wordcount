@@ -2,6 +2,11 @@
 #
 # Set the pkg-config environment
 
+if [ $(basename "$0") = 'env.sh' ]; then
+    echo "This program should be sourced, not run standalone" >&2
+    exit 1
+fi
+
 # Maybe it's already here.
 if pkg-config --exists tomboy-addins; then
     echo "Environment is okay.  Using: `pkg-config --variable=prefix tomboy-addins`"
