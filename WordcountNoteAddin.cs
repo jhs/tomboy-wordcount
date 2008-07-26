@@ -83,7 +83,7 @@ namespace Tomboy.Wordcount
                 {
                     Logger.Log("Wordcount: {0}: {1} {2} {3}", title, lines, words, chars);
 
-                    statWin = new Gtk.Window("This is a window");
+                    statWin = new Gtk.Window(String.Format("{0} - Word count", title));
                     statWin.Resize(200, 100);
 
                     Gtk.VBox box = new Gtk.VBox(false, 0);
