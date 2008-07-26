@@ -68,22 +68,18 @@ namespace Tomboy.Wordcount
 		{
 			int lines, words, chars;// Like wc.
 
-			// For now, the char count simply omits the top-level
-			// XML tag.
-			string header = "<note-content version=\"0.1\">";
-			string footer = "</note-content>";
+			string plain_text = xml_tag.Replace(Note.Data.Text, "");
 
-			chars = Note.Data.Text.Length - header.Length
-				- footer.Length;
-			string realText = Note.Data.Text.Substring (
-				header.Length, chars);
+			// The title and space beneath it do not count.
+			string title = String.Format("{0}\n\n", Note.Title);
+			chars = plain_text.Length - title.Length;
 
 			// The word count is straightforward, but remember to
 			// omit the note title.
-			words = CountWords (realText);
+			words = CountWords (plain_text);
 			words -= CountWords (Note.Title);
 
-			lines = realText.Split ('\n').Length;
+			lines = plain_text.Split ('\n').Length;
 			lines -= 2; // Omit the Title and blank line beneath it.
 
 			ShowStats (Note.Title, lines, words, chars);
