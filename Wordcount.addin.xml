@@ -4,7 +4,7 @@
 	author="Proven Corporation Co., Ltd., Thailand"
         description="Show the size of the text in your notes."
 	category="Tools"
-	defaultEnabled="true"
+	defaultEnabled="false"
 	version="0.2">
 
 	<Runtime>
