@@ -33,7 +33,7 @@ namespace Tomboy.Wordcount
 		public override void Initialize ()
 		{
                         menu_item = new Gtk.ImageMenuItem(Catalog.GetString("Word count"));
-			menu_item.Image = new Gtk.Image (Gtk.Stock.JumpTo, Gtk.IconSize.Menu);  /* TODO: correct this */
+			menu_item.Image = new Gtk.Image (Gtk.Stock.Index, Gtk.IconSize.Menu);  /* TODO: correct this */
 			menu_item.Activated += OnButtonClicked;
 			menu_item.Show ();
 
