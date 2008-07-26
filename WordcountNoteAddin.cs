@@ -34,7 +34,7 @@ namespace Tomboy.Wordcount
 		{
                         menu_item = new Gtk.ImageMenuItem(Catalog.GetString("Word count"));
 			menu_item.Image = new Gtk.Image (Gtk.Stock.Index, Gtk.IconSize.Menu);  /* TODO: correct this */
-			menu_item.Activated += OnButtonClicked;
+			menu_item.Activated += OnMenuItemActivated;
 			menu_item.Show ();
 
 			AddPluginMenuItem (menu_item);
@@ -56,7 +56,7 @@ namespace Tomboy.Wordcount
                     return wordSplitter.Split(s).Length;
                 }
 
-		void OnButtonClicked (object sender, EventArgs args)
+		void OnMenuItemActivated (object sender, EventArgs args)
 		{
                         int lines, words, chars;    // Like wc.
 
