@@ -26,9 +26,6 @@ namespace Tomboy.Wordcount
 		{
 		}
 
-		public override void Shutdown ()
-		{
-		}
 		public override void OnNoteOpened ()
 		{
 			// Add the menu item when the window is created.
@@ -43,6 +40,12 @@ namespace Tomboy.Wordcount
 
 			menu_item.Show ();
 			AddPluginMenuItem (menu_item);
+		}
+
+		public override void Shutdown ()
+		{
+			if (menu_item != null)
+				menu_item.Activated -= OnMenuItemActivated;
 		}
 
 		static Regex wordSplitter = new Regex ("\\s+");
