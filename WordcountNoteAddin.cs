@@ -42,7 +42,7 @@ namespace Tomboy.Wordcount
 		{
 			// Add the menu item when the window is created.
 			menu_item = new Gtk.ImageMenuItem(Catalog.GetString("Word count"));
-			menu_item.Image = new Gtk.Image (Gtk.Stock.Index, Gtk.IconSize.Menu);  /* TODO: correct this */
+			menu_item.Image = new Gtk.Image (Gtk.Stock.Index, Gtk.IconSize.Menu);
 			menu_item.Activated += OnMenuItemActivated;
 			menu_item.AddAccelerator("activate", Window.AccelGroup,
 				(uint) Gdk.Key.o, Gdk.ModifierType.ControlMask,
