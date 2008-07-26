@@ -5,7 +5,7 @@
         description="Show the size of the text in your notes."
 	category="Tools"
 	defaultEnabled="true"
-	version="0.1">
+	version="0.2">
 
 	<Runtime>
 		<Import assembly="Wordcount.dll" />
