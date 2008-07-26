@@ -8,5 +8,8 @@ Wordcount.dll: WordcountNoteAddin.cs Wordcount.addin.xml
 install: Wordcount.dll
 	cp Wordcount.dll $(TOMBOY_DIR)
 
+uninstall:
+	rm -vf $(TOMBOY_DIR)/Wordcount.dll
+
 clean:
 	rm -vf Wordcount.dll Wordcount.dll.mdb
