@@ -32,12 +32,6 @@ namespace Tomboy.Wordcount
 
 		public override void Initialize ()
 		{
-                        menu_item = new Gtk.ImageMenuItem(Catalog.GetString("Word count"));
-			menu_item.Image = new Gtk.Image (Gtk.Stock.Index, Gtk.IconSize.Menu);  /* TODO: correct this */
-			menu_item.Activated += OnMenuItemActivated;
-			menu_item.Show ();
-
-			AddPluginMenuItem (menu_item);
 		}
 
 		public override void Shutdown ()
@@ -46,6 +40,12 @@ namespace Tomboy.Wordcount
 
 		public override void OnNoteOpened ()
 		{
+                        menu_item = new Gtk.ImageMenuItem(Catalog.GetString("Word count"));
+			menu_item.Image = new Gtk.Image (Gtk.Stock.Index, Gtk.IconSize.Menu);  /* TODO: correct this */
+			menu_item.Activated += OnMenuItemActivated;
+			menu_item.Show ();
+
+			AddPluginMenuItem (menu_item);
 		}
 
                 static Regex wordSplitter = new Regex("\\s+");
