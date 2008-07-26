@@ -29,12 +29,13 @@ namespace Tomboy.Wordcount
 		public override void Shutdown ()
 		{
 		}
-
 		public override void OnNoteOpened ()
 		{
 			// Add the menu item when the window is created.
-			menu_item = new Gtk.ImageMenuItem (Catalog.GetString ("Word count"));
-			menu_item.Image = new Gtk.Image (Gtk.Stock.Index, Gtk.IconSize.Menu);
+			menu_item = new Gtk.ImageMenuItem (
+				Catalog.GetString ("Word count"));
+			menu_item.Image = new Gtk.Image (Gtk.Stock.Index,
+				Gtk.IconSize.Menu);
 			menu_item.Activated += OnMenuItemActivated;
 			menu_item.AddAccelerator ("activate", Window.AccelGroup,
 				(uint) Gdk.Key.o, Gdk.ModifierType.ControlMask,
@@ -46,7 +47,7 @@ namespace Tomboy.Wordcount
 
 		static Regex wordSplitter = new Regex ("\\s+");
 
-		/* Return the word count of an arbitrary multi-line text string. */
+		// Return the word count of an arbitrary multi-line text string.
 		private int CountWords (string s)
 		{
 			return wordSplitter.Split (s).Length;
@@ -56,14 +57,18 @@ namespace Tomboy.Wordcount
 		{
 			int lines, words, chars;// Like wc.
 
-			// For now, the char count simply omits the top-level XML tag.
+			// For now, the char count simply omits the top-level
+			// XML tag.
 			string header = "<note-content version=\"0.1\">";
 			string footer = "</note-content>";
 
-			chars = Note.Data.Text.Length - header.Length - footer.Length;
-			string realText = Note.Data.Text.Substring (header.Length, chars);
+			chars = Note.Data.Text.Length - header.Length
+				- footer.Length;
+			string realText = Note.Data.Text.Substring (
+				header.Length, chars);
 
-			/* The word count is straightforward, but remember to omit the note title. */
+			// The word count is straightforward, but remember to
+			// omit the note title.
 			words = CountWords (realText);
 			words -= CountWords (Note.Title);
 
@@ -75,17 +80,22 @@ namespace Tomboy.Wordcount
 
 		private Gtk.Window stat_win;
 
-		private void ShowStats (string title, int lines, int words, int chars)
+		private void ShowStats (string title, int lines, int words,
+		                        int chars)
 		{
-			Logger.Log ("Wordcount: {0}: {1} {2} {3}", title, lines, words, chars);
+			Logger.Log ("Wordcount: {0}: {1} {2} {3}", title, lines,
+				words, chars);
 
-			stat_win = new Gtk.Window (String.Format ("{0} - Word count", title));
+			stat_win = new Gtk.Window (String.Format (
+				"{0} - Word count", title));
 			stat_win.Resize (200, 100);
 
 			Gtk.VBox box = new Gtk.VBox (false, 0);
 
 			Gtk.Label stat_label = new Gtk.Label ();
-			stat_label.Text = String.Format ("{0}\n\nLines: {1}\nWords: {2}\nCharacters: {3}\n", title, lines, words, chars);
+			stat_label.Text = String.Format (
+				"{0}\n\nLines: {1}\nWords: {2}\nCharacters: {3}\n",
+				title, lines, words, chars);
 
 			box.PackStart (stat_label, true, true, 0);
 
