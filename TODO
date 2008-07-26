@@ -1,14 +1,12 @@
 Bugs
 ====
 
-* XML tags within the note are counted as normal characters and words.
-  Should probably use an XSLT to convert to genuine plain text and then
-  process that.
 * Need a Changelog
 
 Features
 ========
 
 * Tomboy 0.11 support
-* Convert from XML to plain text and count it that way
+* Possibly use XSLT to convert to genuine plain text and then
+  process that.
 * An information bar at the bottom of each note with live word count

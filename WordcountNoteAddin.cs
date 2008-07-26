@@ -48,12 +48,20 @@ namespace Tomboy.Wordcount
 				menu_item.Activated -= OnMenuItemActivated;
 		}
 
-		static Regex wordSplitter = new Regex ("\\s+");
+		static Regex xml_tag    = new Regex ("<.*?>");
+		static Regex boundaries = new Regex (@"[\s;,-]+");
 
 		// Return the word count of an arbitrary multi-line text string.
-		private int CountWords (string s)
+		private int CountWords (string source)
 		{
-			return wordSplitter.Split (s).Length;
+			// The idea is to condense all whitespace to one space,
+			// remove the XML tags, and then count what's left.
+			string final = source;
+
+			final = xml_tag.Replace(final, "");
+			final = final.Trim();
+
+			return boundaries.Split (final).Length;
 		}
 
 		void OnMenuItemActivated (object sender, EventArgs args)
