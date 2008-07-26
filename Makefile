@@ -1,8 +1,8 @@
 TOMBOY_DIR=$(HOME)/.tomboy/addins
 
-Wordcount.dll: WordcountMenuItem.cs WordcountNoteAddin.cs Wordcount.addin.xml
+Wordcount.dll: WordcountNoteAddin.cs Wordcount.addin.xml
 	gmcs -debug -out:Wordcount.dll -define:DEBUG -target:library -pkg:tomboy-addins -r:Mono.Posix \
-	WordcountMenuItem.cs WordcountNoteAddin.cs -resource:Wordcount.addin.xml \
+	WordcountNoteAddin.cs -resource:Wordcount.addin.xml \
 	`pkg-config --libs tomboy-addins gnome-sharp-2.0`
 
 install: Wordcount.dll
