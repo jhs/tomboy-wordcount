@@ -77,19 +77,33 @@ namespace Tomboy.Wordcount
                         ShowStats(Note.Title, lines, words, chars);
 		}
 
-                void ShowStats(string title, int lines, int words, int chars)
+                private Gtk.Window statWin;
+
+                private void ShowStats(string title, int lines, int words, int chars)
                 {
                     Logger.Log("Wordcount: {0}: {1} {2} {3}", title, lines, words, chars);
 
-                    Gtk.Window statWin = new Gtk.Window("This is a window");
+                    statWin = new Gtk.Window("This is a window");
                     statWin.Resize(200, 100);
 
+                    Gtk.VBox box = new Gtk.VBox(false, 0);
+
                     Gtk.Label statLabel = new Gtk.Label();
-                    statLabel.Text = String.Format("{0}\n\nLines: {1}\nWords: {2}\nCharacters: {3}", title, lines, words, chars);
+                    statLabel.Text = String.Format("{0}\n\nLines: {1}\nWords: {2}\nCharacters: {3}\n", title, lines, words, chars);
 
-                    statWin.Add(statLabel);
+                    box.PackStart(statLabel, true, true, 0);
 
+                    Gtk.Button ok = new Gtk.Button("Close");
+                    ok.Clicked += new EventHandler(OkHandler);
+                    box.PackStart(ok, true, true, 0);
+
+                    statWin.Add(box);
                     statWin.ShowAll();
+                }
+
+                private void OkHandler(object o, EventArgs args)
+                {
+                    statWin.Destroy();
                 }
 	}
 }
