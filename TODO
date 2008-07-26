@@ -2,6 +2,7 @@ Bugs
 ====
 
 * Need a Changelog
+* Can't close the wordcount window if the note is already closed.
 
 Features
 ========
