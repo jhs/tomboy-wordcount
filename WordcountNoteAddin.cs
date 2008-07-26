@@ -1,20 +1,12 @@
-/* This file is part of Tomboy-Wordcount.
- *
- * Tomboy-Wordcount is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License,
- * version 3, as published by the Free Software Foundation.
- *
- * Tomboy-Wordcount is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License in the file gpl-3.0.txt
- * for more details.
- *
- * You should have received a copy of the GNU General
- * Public License along with Tomboy-Wordcount; if not, write to the Free
- * Software Foundation, Inc., 59 Temple Place, Suite 330,
- * Boston, MA 02111-1307 USA.
- */
+//
+// WordcountNoteAddin.cs: Count Tomboy note contents a la /usr/bin/wc
+//
+// Author:
+//   Jason Smith (jhs@proven-corporation.com)
+//
+// Copyright (C) 2008 Proven Corporation Co., Ltd., Thailand
+// (http://www.proven-corporation.com)
+//
 
 using System;
 using System.Collections;
