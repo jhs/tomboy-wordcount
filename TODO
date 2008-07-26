@@ -9,5 +9,6 @@ Bugs
 Features
 ========
 
+* Tomboy 0.11 support
 * Convert from XML to plain text and count it that way
 * An information bar at the bottom of each note with live word count
