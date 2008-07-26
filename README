@@ -1,0 +1,41 @@
+Tomboy Wordcount Plugin
+
+Copyright Information
+=====================
+
+Tomboy-Wordcount is licensed to you under the terms of the GNU General
+public license, version 3.  For the full text of this license, please
+see the gpl-3.0.txt file which accompanies these instructions.
+
+Author: Jason Smith <jhs@proven-corporation.com>
+        Proven Corporation Co., Ltd.
+        Bangkok, Thailand
+        http://www.proven-corporation.com
+
+
+Overview
+========
+
+This is a Tomboy plugin (addin) which will count the lines, words, and
+characters in a note, much like the Unix "wc" tool.
+
+Installation
+============
+
+Most users can run "make install".  If you have Tomboy installed in a
+non-standard location, then you will need to source the env.sh script:
+
+  $ source env.sh
+
+Please edit the script first and configure the prefix so that it will
+know where to find tomboy.
+
+Usage
+=====
+
+Enable the plugin in the Tomboy preferences, and then open a note.
+Next, click the "Tools" button and select "Word count".  (Alternatively
+you can press Ctrl-O.)  Congratulations!  Now you know how many lines,
+words, and characters are in your note.
+
+Please see the TODO file for a list of current bugs and features.
